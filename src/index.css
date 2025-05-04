@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+@theme {
+  --color-Red: hsl(14, 86%, 42%);
+  --color-Green: hsl(159, 69%, 38%);
+
+  --color-Rose-50: hsl(20, 50%, 98%);
+  --color-Rose-100: hsl(13, 31%, 94%);
+  --color-Rose-300: hsl(14, 25%, 72%);
+  --color-Rose-400: hsl(7, 20%, 60%);
+  --color-Rose-500: hsl(12, 20%, 44%);
+  --color-Rose-900: hsl(14, 65%, 9%);
+
+  --font-size: 16px;
+  --font-family: "Red Hat Text", serif;
+}
+
+body {
+  max-width: 90rem;
+  min-height: 100vh;
+  margin: 0 auto;
+ background-color: var(--color-Rose-50);
+  font-family: var(--font-family);
+}
