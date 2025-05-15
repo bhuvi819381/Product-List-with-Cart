@@ -1,4 +1,4 @@
-import { div } from "framer-motion/client";
+
 import { useCartStore } from "../stores/cartStore";
 import type { CartItem } from "../stores/cartStore";
 import { motion, AnimatePresence } from "framer-motion";
