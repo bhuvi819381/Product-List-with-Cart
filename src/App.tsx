@@ -16,14 +16,14 @@ const App = () => {
   }, [setProducts]);
 
   return (
-    <div className="min-h-screen bg-Rose-50 text-Rose-900">
-      <main className="max-w-[1220px] mx-auto  py-20">
-        <div className="flex flex-col lg:flex-row gap-8">
+    <div className="bg-Rose-50 min-h-screen text-Rose-900">
+      <main className="mx-auto py-20 max-w-[1220px]">
+        <div className="flex lg:flex-row flex-col gap-8">
           {/* Main content */}
-          <section className="flex-1">
-            <h1 className="text-[2.5em] font-bold text-Rose-900 mb-8">Desserts</h1>
+          <section className="flex-1 p-[1rem]">
+            <h1 className="mb-8 font-bold text-[2.5em] text-Rose-900">Desserts</h1>
 
-            <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 list-none p-0">
+            <ul className="gap-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-0 list-none">
               {products.map((product) => (
                 <li key={product.name}>
                   <ProductCard product={product} />
@@ -33,7 +33,7 @@ const App = () => {
           </section>
 
           {/* Cart summary */}
-          <aside className="lg:w-[350px]">
+          <aside className="p-[1rem] lg:w-[350px]">
             <CartSummary />
           </aside>
         </div>

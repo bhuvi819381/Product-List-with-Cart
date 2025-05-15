@@ -90,7 +90,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <motion.article
-      className="bg-white rounded-md overflow-hidden h-full flex flex-col"
+      className="flex flex-col bg-white rounded-md h-full overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -105,7 +105,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         <figure>
           <motion.div
             whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.2 }}
           >
             <picture>
               <source
@@ -130,7 +130,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </figure>
 
         {/* Add to cart button positioned half on image, half below */}
-        <div className="absolute -bottom-5 left-0 right-0 px-4">
+        <div className="right-0 -bottom-5 left-0 absolute px-4">
           <AnimatePresence mode="wait">
             {!isAdding ? (
               <motion.button
@@ -140,7 +140,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
                 onClick={handleAddToCart}
-                className="w-full bg-white border border-Rose-200 hover:bg-Rose-100 text-Rose-900 py-2 px-4 rounded-md flex items-center justify-center gap-2 shadow-md"
+                className="flex justify-center items-center gap-2 bg-white hover:bg-Rose-100 shadow-md px-4 py-2 border border-Rose-200 rounded-full w-full text-Rose-900"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 aria-label={`Add ${product.name} to cart`}
@@ -163,21 +163,21 @@ const ProductCard = ({ product }: ProductCardProps) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="w-full bg-white py-2 px-4 rounded-md shadow-md flex items-center justify-between"
+                className="flex justify-between items-center bg-Red shadow-md px-4 py-2 rounded-full w-full"
               >
                 <motion.button
                   onClick={decreaseQuantity}
-                  className="w-8 h-8 flex items-center justify-center hover:bg-Rose-100 rounded-md"
-                  whileHover={{ backgroundColor: "rgba(255, 200, 200, 0.3)" }}
+                  className="flex justify-center items-center bg-white hover:bg-Rose-100 rounded-full w-8 h-8"
+                 
                   whileTap={{ scale: 0.9 }}
                   aria-label="Decrease quantity"
                   disabled={quantity <= 1}
                 >
-                  <span className="text-lg font-medium text-Red">−</span>
+                  <span className="font-medium text-Red text-lg">−</span>
                 </motion.button>
 
                 <motion.span
-                  className="font-medium text-lg"
+                  className="font-medium text-lg text-white"
                   key={quantity}
                   initial={{ scale: 1.5, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
@@ -188,12 +188,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
                 <motion.button
                   onClick={increaseQuantity}
-                  className="w-8 h-8 flex items-center justify-center hover:bg-Rose-100 rounded-md"
-                  whileHover={{ backgroundColor: "rgba(255, 200, 200, 0.3)" }}
+                  className="flex justify-center items-center hover:bg-Rose-100 rounded-full w-8 h-8 bg-white"
+                  
                   whileTap={{ scale: 0.9 }}
                   aria-label="Increase quantity"
                 >
-                  <span className="text-lg font-medium text-Red">+</span>
+                  <span className="font-medium text-Red text-lg">+</span>
                 </motion.button>
               </motion.div>
             )}
@@ -202,7 +202,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
       </div>
 
       {/* Content section with extra padding for the overlapping button */}
-      <div className="p-4 pt-10 flex flex-col flex-grow">
+      <div className="flex flex-col flex-grow p-4 pt-10">
         {/* Category and name */}
         <motion.header
           initial={{ opacity: 0 }}
@@ -210,12 +210,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
           transition={{ delay: 0.2, duration: 0.5 }}
         >
           <p className="text-Rose-500 text-sm">{product.category}</p>
-          <h3 className="font-medium text-base mt-1">{product.name}</h3>
+          <h3 className="mt-1 font-medium text-base">{product.name}</h3>
         </motion.header>
 
         {/* Price */}
         <motion.p
-          className="text-Red font-medium mt-1"
+          className="mt-1 font-medium text-Red"
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}

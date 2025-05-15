@@ -1,3 +1,4 @@
+import { div } from "framer-motion/client";
 import { useCartStore } from "../stores/cartStore";
 import type { CartItem } from "../stores/cartStore";
 import { motion, AnimatePresence } from "framer-motion";
@@ -23,7 +24,7 @@ const CartSummary = () => {
 
   return (
     <motion.section
-      className="bg-white rounded-lg shadow-sm p-6"
+      className="bg-white shadow-sm p-6 rounded-lg"
       aria-labelledby="cart-heading"
       initial={{ opacity: 0, x: 50 }}
       animate={{ opacity: 1, x: 0 }}
@@ -31,7 +32,7 @@ const CartSummary = () => {
     >
       <motion.h2
         id="cart-heading"
-        className="text-xl font-semibold text-Red mb-6"
+        className="mb-6 font-semibold text-Red text-xl"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
@@ -40,14 +41,20 @@ const CartSummary = () => {
       </motion.h2>
 
       {cart.length === 0 ? (
-        <motion.p
-          className="text-center py-8 text-Rose-500"
+        <motion.div
+          className="flex flex-col justify-center items-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
         >
-          Your cart is empty
-        </motion.p>
+          <img
+            src="/assets/images/illustration-empty-cart.svg"
+            alt="empty cart"
+          />
+          <motion.p className="py-2 text-Rose-500 text-center">
+            Your added item will appear here
+          </motion.p>
+        </motion.div>
       ) : (
         <>
           <motion.ul
@@ -78,7 +85,7 @@ const CartSummary = () => {
           </motion.ul>
 
           <motion.div
-            className="border-t border-Rose-100 pt-4 mb-6"
+            className="mb-6 pt-4 border-Rose-100 border-t"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -116,7 +123,7 @@ const CartSummary = () => {
 
           <motion.button
             onClick={handleConfirmOrder}
-            className="w-full bg-Red hover:bg-opacity-90 text-white py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-Red focus:ring-opacity-50"
+            className="bg-Red hover:bg-opacity-90 focus:ring-opacity-50 px-4 py-3 rounded-md focus:outline-none focus:ring-2 focus:ring-Red w-full text-white"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             initial={{ opacity: 0, y: 20 }}
@@ -143,7 +150,7 @@ const CartItem = ({ item, onRemove, formatPrice }: CartItemProps) => {
     <div className="flex justify-between items-start">
       <div className="flex items-start gap-2">
         <motion.span
-          className="text-Red font-medium text-sm"
+          className="font-medium text-Red text-sm"
           aria-label={`Quantity: ${item.quantity}`}
           key={item.quantity}
           initial={{ scale: 1.5 }}
@@ -174,7 +181,7 @@ const CartItem = ({ item, onRemove, formatPrice }: CartItemProps) => {
         </motion.p>
         <motion.button
           onClick={() => onRemove(item.name)}
-          className="p-1 hover:bg-Rose-100 rounded-full"
+          className="hover:bg-Rose-100 p-1 rounded-full"
           aria-label={`Remove ${item.name} from cart`}
           whileHover={{
             backgroundColor: "rgba(255, 200, 200, 0.3)",
